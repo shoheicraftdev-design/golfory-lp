@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golfory — ラウンドを、思い出と費用ごと残す</title>
+<meta name="description" content="ゴルフのラウンドを1件ずつ、スコア・同伴者・昼食・写真・今日の一打・費用まで残すiPhoneアプリ。ホール単位のスコアはつけません。プレー後に、その日を1画面で書き終わります。">
+<meta property="og:title" content="Golfory — ラウンドを、思い出と費用ごと残す">
+<meta property="og:description" content="ゴルフのラウンドを1件ずつ、スコア・同伴者・昼食・写真・費用まで残すiPhoneアプリ。">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f5f5f7;
+    --fg: #1c1c1e;
+    --fg-soft: #5a5a5f;
+    --line: #e3e3e6;
+    --accent: #0a6b52;
+    --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111113;
+      --bg-soft: #1c1c1f;
+      --fg: #f2f2f4;
+      --fg-soft: #a8a8ae;
+      --line: #2e2e33;
+      --accent: #6fcfb0;
+      --card: #1c1c1f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    line-height: 1.85;
+    color: var(--fg);
+    background: var(--bg);
+    font-size: 16px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  /* hero */
+  .hero { text-align: center; padding: 72px 0 56px; }
+  .icon { width: 84px; height: 84px; border-radius: 20px; margin-bottom: 20px; }
+  .mark {
+    display: inline-block; font-size: 0.8rem; letter-spacing: .12em;
+    color: var(--fg-soft); border: 1px solid var(--line);
+    border-radius: 999px; padding: 4px 14px; margin-bottom: 22px;
+  }
+  h1 { font-size: clamp(2rem, 7vw, 3rem); line-height: 1.35; margin: 0 0 18px; letter-spacing: .01em; }
+  .lead { font-size: clamp(1rem, 3.4vw, 1.15rem); color: var(--fg-soft); margin: 0 auto 32px; max-width: 34em; }
+  .cta {
+    display: inline-block; background: var(--fg); color: var(--bg);
+    text-decoration: none; font-weight: 600;
+    padding: 14px 30px; border-radius: 999px; font-size: 1rem;
+  }
+  .cta:hover { opacity: .85; }
+  .cta-note { display: block; margin-top: 12px; font-size: .85rem; color: var(--fg-soft); }
+
+  h2 { font-size: clamp(1.3rem, 4.6vw, 1.7rem); margin: 0 0 10px; line-height: 1.45; }
+  h3 { font-size: 1.05rem; margin: 0 0 6px; }
+  .sub { color: var(--fg-soft); margin: 0 0 30px; }
+  p { margin: 0 0 1em; }
+
+  /* before/after comparison */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+  .compare > div {
+    background: var(--bg-soft); border-radius: 16px; padding: 24px 20px;
+  }
+  .compare .label { font-size: .82rem; color: var(--fg-soft); margin-bottom: 10px; }
+  .compare strong { display: block; font-size: 1rem; margin-bottom: 8px; }
+  .compare p { font-size: .92rem; color: var(--fg-soft); margin: 0; }
+  @media (max-width: 560px) { .compare { grid-template-columns: 1fr; } }
+
+  /* feature rows */
+  .row { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center; }
+  .row.flip { grid-template-columns: 260px 1fr; }
+  .row.flip .shot { order: -1; }
+  .shot img {
+    width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto;
+    border-radius: 22px; border: 1px solid var(--line);
+  }
+  @media (max-width: 720px) {
+    .row, .row.flip { grid-template-columns: 1fr; gap: 26px; }
+    .row.flip .shot { order: 0; }
+  }
+
+  ul { padding-left: 1.3em; margin: 0 0 1em; }
+  li { margin-bottom: .4em; }
+  .note { background: var(--bg-soft); border-radius: 14px; padding: 20px 22px; color: var(--fg-soft); font-size: .94rem; }
+  .price { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 0; }
+  .price > div { border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; }
+  .price .tier { font-size: .82rem; color: var(--fg-soft); margin-bottom: 8px; }
+  .price .amount { font-size: 1.35rem; font-weight: 600; margin-bottom: 12px; }
+  .price ul { margin: 0; font-size: .93rem; color: var(--fg-soft); }
+  @media (max-width: 560px) { .price { grid-template-columns: 1fr; } }
+  a { color: var(--accent); }
+
+  footer { padding: 40px 0 64px; font-size: .9rem; color: var(--fg-soft); text-align: center; }
+  footer a { margin: 0 10px; display: inline-block; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="icon" src="images/appicon.png" alt="Golfory アプリアイコン">
+    <span class="mark">iPhone アプリ</span>
+    <h1>あのラウンド、<br>誰と回って、何を食べたっけ。</h1>
+    <p class="lead">
+      Golfory（ゴルフォリー）は、ゴルフのラウンドを1件ずつ「思い出と費用ごと」残すアプリです。<br>
+      ホール単位のスコアはつけません。プレー中はいつものスコアアプリ、プレー後の夜にこのアプリ。1画面で書き終わります。
+    </p>
+    <span class="cta" id="cta-top">App Store で近日公開</span>
+    <span class="cta-note">無料で使えます（広告あり）・Golfory Pro 月額 ¥150 / 年額 ¥1,200 で広告非表示と iCloud 同期</span>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>スコアは残っている。それ以外は、記憶頼み</h2>
+    <p class="sub">スコアアプリにはスコアが、カメラロールには写真が散らばっています。「前に一緒に行ったとき、あのホールどうだったっけ」と話すとき、探すところから始まります。</p>
+
+    <div class="compare">
+      <div>
+        <div class="label">スコアアプリ</div>
+        <strong>プレー中に、ホールごとに打つ</strong>
+        <p>18ホール分のスコアはきれいに残ります。誰と回ったか、昼に何を食べたか、いくらかかったかは残りません。</p>
+      </div>
+      <div>
+        <div class="label">Golfory</div>
+        <strong>プレー後に、1件として残す</strong>
+        <p>ゴルフ場・合計スコア・同伴者・昼食・写真・今日の一打・振り返り・費用。その日の1ラウンドを、1画面で書き終わります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <h2>その日の夜に、1画面で書き終わる</h2>
+        <p>日付とゴルフ場名だけで保存できます。あとは残したい分だけ。前半・後半のスコア、同伴者とそのスコア、天候、ティー、昼食、タグ、今日の一打、振り返り、そのゴルフ場の覚え書き。</p>
+        <p>ゴルフ場名と同伴者名は、一度入れると次から候補に出ます。</p>
+        <p class="sub" style="margin-bottom:0">OB・ワンペナ・ロストボールを数えたい人だけ、設定でオンにすると入力欄が出ます。既定では出ません。</p>
+      </div>
+      <div class="shot"><img src="images/shot-form.png" alt="ラウンドの記録画面。日付、ゴルフ場名、前半44・後半42・合計86、同伴者2人のスコア、費用の入力欄が並んでいる" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row flip">
+      <div class="shot"><img src="images/shot-detail.png" alt="ラウンド詳細画面。スコア、天候、ティー、同伴者のスコア、タグ、昼食、今日の一打、振り返りメモが1画面に並んでいる" loading="lazy"></div>
+      <div>
+        <h2>写真も、今日の一打も、一緒に残る</h2>
+        <p>写真はカメラロールから選ぶだけ。Golfory は写真を複製せず、<strong>どの写真かの参照だけを保存します</strong>。だからアプリが重くなりません。</p>
+        <p>「今日の一打」は、その日いちばん心に残った1打を1行で。次のラウンドに向けた振り返りと、そのゴルフ場の注意点も、同じ画面に残ります。</p>
+        <p class="sub" style="margin-bottom:0">同伴者と話すときに、そのラウンドを開けば、写真も出来事もそこにあります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <h2>かかったお金も、項目ごとに</h2>
+        <p>プレー代・飲食・交通・その他。ラウンドごとに金額を入れると、その日の合計が出ます。</p>
+        <p class="sub" style="margin-bottom:0">年間の集計と内訳、練習やグッズの費用まで含めた「ゴルフ家計簿」は、次のバージョンで予定しています。</p>
+      </div>
+      <div class="shot"><img src="images/shot-cost.png" alt="ラウンド詳細の費用部分。プレー代 ¥12,800、飲食 ¥1,800、交通 ¥2,400、その他 ¥600、合計 ¥17,600" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="row flip">
+      <div class="shot"><img src="images/shot-paywall.png" alt="Golfory Pro の画面。iCloud同期と広告除去、月額 ¥150 と年額 ¥1,200 のプラン" loading="lazy"></div>
+      <div>
+        <h2>料金</h2>
+        <div class="price">
+          <div>
+            <div class="tier">無料</div>
+            <div class="amount">¥0</div>
+            <ul>
+              <li>記録・見返しに制限はありません</li>
+              <li>件数の上限もありません</li>
+              <li>一覧の下に広告が1つ出ます</li>
+            </ul>
+          </div>
+          <div>
+            <div class="tier">Golfory Pro（サブスクリプション）</div>
+            <div class="amount">月額 ¥150 / 年額 ¥1,200</div>
+            <ul>
+              <li>広告の非表示</li>
+              <li>iCloud 同期（複数の端末で記録を揃える）</li>
+            </ul>
+          </div>
+        </div>
+        <p class="sub" style="margin:20px 0 0">自動更新です。解約は iOS の「設定」→「サブスクリプション」からいつでもできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>やらないこと</h2>
+    <ul>
+      <li>ホール単位のスコア入力（スコアアプリと併用する前提です）</li>
+      <li>スコア入りの写真をつくって SNS に共有する機能</li>
+      <li>GPS ナビ・距離計測</li>
+    </ul>
+    <div class="note">
+      こんな方に向いています——月1回くらい回るエンジョイゴルファー、スコアは楽天やGDOでつけていて、写真は撮るけれど整理はしていない方、いくら使っているのか一度も足したことがない方。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>対応環境とご注意</h2>
+    <ul>
+      <li>iOS 17.0 以上の iPhone</li>
+      <li>iCloud 同期は Golfory Pro で有効になります（無料のあいだは端末の中だけで記録します）</li>
+      <li>写真の本体は「写真」アプリに残ります。「写真」アプリで削除した写真は Golfory でも表示できなくなります</li>
+      <li>アカウント登録は不要です</li>
+    </ul>
+    <p style="margin-bottom:0">本アプリが表示するスコア・費用の合計は、<strong>あなたが入力した内容の集計です</strong>。公式のスコア・ハンディキャップ・会計記録としての効力はありません。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><span class="cta" id="cta-bottom">App Store で近日公開</span></p>
+    <p style="margin-top:26px">
+      <a href="https://shoheicraftdev-design.github.io/golfory-support/">サポート・使い方</a>
+      <a href="https://shoheicraftdev-design.github.io/golfory-support/privacy.html">プライバシーポリシー</a>
+      <a href="https://shoheicraftdev-design.github.io/golfory-support/terms.html">利用規約</a>
+      <a href="mailto:shohei.craft.dev@gmail.com">お問い合わせ</a>
+    </p>
+    <p style="margin-top:18px">ShoheiCraftDev</p>
+  </div>
+</footer>
+
+</body>
+</html>
