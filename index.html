@@ -8,327 +8,317 @@
 <meta property="og:title" content="Golfory — ラウンドも、練習も、道具代も。ゴルフの記録を1冊に。">
 <meta property="og:description" content="ラウンド・練習・道具代をまとめて記録するiPhoneアプリ。ラウンド・練習・グッズ購入を記録し、カレンダーと集計であとから振り返れます。">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap">
 <style>
-  :root {
-    --bg: #ffffff;
-    --bg-soft: #f5f5f7;
-    --fg: #1c1c1e;
-    --fg-soft: #5a5a5f;
-    --line: #e3e3e6;
-    --accent: #0a6b52;
-    --card: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111113;
-      --bg-soft: #1c1c1f;
-      --fg: #f2f2f4;
-      --fg-soft: #a8a8ae;
-      --line: #2e2e33;
-      --accent: #6fcfb0;
-      --card: #1c1c1f;
-    }
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-    line-height: 1.85;
-    color: var(--fg);
-    background: var(--bg);
-    font-size: 16px;
-  }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
-  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
-  section:last-of-type { border-bottom: none; }
-
-  /* hero */
-  .hero { text-align: center; padding: 72px 0 56px; }
-  .icon { width: 84px; height: 84px; border-radius: 20px; margin-bottom: 20px; }
-  .mark {
-    display: inline-block; font-size: 0.8rem; letter-spacing: .12em;
-    color: var(--fg-soft); border: 1px solid var(--line);
-    border-radius: 999px; padding: 4px 14px; margin-bottom: 22px;
-  }
-  h1 { font-size: clamp(2rem, 7vw, 3rem); line-height: 1.35; margin: 0 0 18px; letter-spacing: .01em; }
-  .lead { font-size: clamp(1rem, 3.4vw, 1.15rem); color: var(--fg-soft); margin: 0 auto 32px; max-width: 34em; }
-  .cta {
-    display: inline-block; background: var(--fg); color: var(--bg);
-    text-decoration: none; font-weight: 600;
-    padding: 14px 30px; border-radius: 999px; font-size: 1rem;
-  }
-  .cta:hover { opacity: .85; }
-  .cta-note { display: block; margin-top: 12px; font-size: .85rem; color: var(--fg-soft); }
-
-  h2 { font-size: clamp(1.3rem, 4.6vw, 1.7rem); margin: 0 0 10px; line-height: 1.45; }
-  h3 { font-size: 1.05rem; margin: 0 0 6px; }
-  .sub { color: var(--fg-soft); margin: 0 0 30px; }
-  p { margin: 0 0 1em; }
-
-  /* before/after comparison */
-  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
-  .compare > div {
-    background: var(--bg-soft); border-radius: 16px; padding: 24px 20px;
-  }
-  .compare .label { font-size: .82rem; color: var(--fg-soft); margin-bottom: 10px; }
-  .compare strong { display: block; font-size: 1rem; margin-bottom: 8px; }
-  .compare p { font-size: .92rem; color: var(--fg-soft); margin: 0; }
-  @media (max-width: 560px) { .compare { grid-template-columns: 1fr; } }
-
-  /* feature rows */
-  .row { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center; }
-  .row.flip { grid-template-columns: 260px 1fr; }
-  .row.flip .shot { order: -1; }
-  .shot img {
-    width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto;
-    border-radius: 22px; border: 1px solid var(--line);
-  }
-  @media (max-width: 720px) {
-    .row, .row.flip { grid-template-columns: 1fr; gap: 26px; }
-    .row.flip .shot { order: 0; }
-  }
-
-  ul { padding-left: 1.3em; margin: 0 0 1em; }
-  li { margin-bottom: .4em; }
-  .note { background: var(--bg-soft); border-radius: 14px; padding: 20px 22px; color: var(--fg-soft); font-size: .94rem; }
-  .price { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0 0; }
-  .price > div { border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; }
-  .price .tier { font-size: .82rem; color: var(--fg-soft); margin-bottom: 8px; }
-  .price .amount { font-size: 1.35rem; font-weight: 600; margin-bottom: 12px; }
-  .price ul { margin: 0; font-size: .93rem; color: var(--fg-soft); }
-  @media (max-width: 560px) { .price { grid-template-columns: 1fr; } }
-  a { color: var(--accent); }
-
-  footer { padding: 40px 0 64px; font-size: .9rem; color: var(--fg-soft); text-align: center; }
-  footer a { margin: 0 10px; display: inline-block; }
+body{margin:0;background:#F3F4EE}
+a{color:#1F7A45}a:hover{color:#155C33}
+.gf-root{font-family:"Zen Kaku Gothic New",system-ui,sans-serif;color:#15231B;background:#F3F4EE;line-height:1.85;font-size:16px}
+.gf-root *{box-sizing:border-box}
+.gf-wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.gf-serif{font-family:"Shippori Mincho B1","Hiragino Mincho ProN",serif}
+.gf-mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.gf-hero{position:relative;min-height:760px;display:flex;flex-direction:column;background-color:#1D3B2A;background-image:url(images/hero-fairway.jpg);background-size:cover;background-position:center 62%}
+.gf-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,28,18,0.45) 0%,rgba(10,28,18,0) 28%,rgba(10,28,18,0.15) 50%,rgba(10,28,18,0.78) 100%)}
+.gf-h1{font-size:clamp(2.2rem,5.2vw,4.4rem)}
+.gf-h2{font-size:clamp(1.6rem,3.2vw,2.5rem)}
+.gf-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.gf-toc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.gf-chapter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:64px;align-items:center}
+.gf-chapter.flip{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.gf-phones{display:flex;justify-content:center;gap:24px;align-items:flex-start}
+.gf-price{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.gf-not{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){
+.gf-chapter,.gf-chapter.flip{grid-template-columns:minmax(0,1fr);gap:40px}
+.gf-chapter.flip .gf-phones{order:2}
+.gf-toc{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gf-not{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+.gf-wrap{padding:0 16px}
+.gf-hero{min-height:640px}
+.gf-compare,.gf-price{grid-template-columns:minmax(0,1fr)}
+.gf-phones{gap:12px}
+.gf-navlinks{display:none !important}
+}
 </style>
 </head>
 <body>
+<div class="gf-root">
 
-<header class="hero">
-  <div class="wrap">
-    <img class="icon" src="images/appicon.png" alt="Golfory アプリアイコン">
-    <span class="mark">iPhone アプリ</span>
-    <h1>ラウンドも、練習も、道具代も。<br>ゴルフの記録を1冊に。</h1>
-    <p class="lead">
-      Golfory（ゴルフォリー）は、ラウンド・練習・グッズ購入をまとめて記録できるアプリです。<br>
-      あとで見返せば、いつ・どこで・誰と・いくら使ったかが分かります。プレー中のスコアはスコアアプリで、Golfory はプレーが終わったあとに使ってください。
-    </p>
-    <a class="cta" id="cta-top" href="https://apps.apple.com/jp/app/golfory/id6814350521">App Store で見る</a>
-    <span class="cta-note">無料で使えます（広告あり）・Golfory Pro 月額 ¥150 / 年額 ¥1,200 で iCloud 同期・広告の非表示・集計統計</span>
-  </div>
+<!-- hero -->
+<header class="gf-hero">
+<div class="gf-wrap" style="position: relative; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 80px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF">
+<img src="images/appicon.png" alt="" style="width: 40px; height: 40px; border-radius: 10px">
+<span class="gf-serif" style="font-weight: 800; font-size: 22px; letter-spacing: 0.02em">Golfory</span>
+</a>
+<nav style="display: flex; align-items: center; gap: 28px">
+<div class="gf-navlinks" style="display: flex; gap: 24px; font-size: 14px">
+<a href="#round" style="color: #FFFFFF; text-decoration: none">ラウンド</a>
+<a href="#practice" style="color: #FFFFFF; text-decoration: none">練習・グッズ</a>
+<a href="#money" style="color: #FFFFFF; text-decoration: none">家計簿</a>
+<a href="#price" style="color: #FFFFFF; text-decoration: none">料金</a>
+</div>
+<a href="https://apps.apple.com/jp/app/golfory/id6814350521" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #FFFFFF; color: #15231B; text-decoration: none; font-weight: 700; font-size: 14px; white-space: nowrap">App Store</a>
+</nav>
+</div>
+
+<div id="top" class="gf-wrap" style="position: relative; width: 100%; margin-top: auto; padding-bottom: 72px; color: #FFFFFF">
+<p class="gf-mono" style="margin: 0 0 20px; font-size: 13px; letter-spacing: 0.14em; color: #D8EBDD">GOLF JOURNAL FOR iPHONE</p>
+<h1 class="gf-serif gf-h1" style="margin: 0 0 24px; font-weight: 800; line-height: 1.35; letter-spacing: 0.02em">ラウンドも、練習も、道具代も。<br>ゴルフの記録を1冊に。</h1>
+<p style="margin: 0 0 36px; font-size: 18px; max-width: 45em; color: #EEF4EF">いつ・どこで・誰と回って、いくら使ったか。<br>スコアはプレー中にスコアアプリで。Golfory は、プレーが終わったあとに開く記録帳です。</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+<a id="cta-top" href="https://apps.apple.com/jp/app/golfory/id6814350521" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 28px; border-radius: 16px; background: #FFFFFF; color: #15231B; text-decoration: none; font-weight: 700; font-size: 16px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>
+App Store で入手
+</a>
+<span style="font-size: 14px; line-height: 1.6; color: #E2ECE4">無料（広告あり）<br>Golfory Pro 月額 ¥150 / 年額 ¥1,200</span>
+</div>
+</div>
 </header>
 
-<section>
-  <div class="wrap">
-    <h2>スコアは残っている。それ以外は、記憶頼み</h2>
-    <p class="sub">スコアアプリにはスコアが、カメラロールには写真が散らばっています。「前に一緒に行ったとき、あのホールどうだったっけ」と話すとき、探すところから始まります。</p>
+<!-- problem -->
+<section style="padding: 112px 0">
+<div class="gf-wrap">
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #1F7A45">WHY</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 16px; font-weight: 800; line-height: 1.45">スコアは残っている。<br>それ以外は、記憶頼み。</h2>
+<p style="margin: 0 0 56px; color: #4B5A51; max-width: 40em">スコアアプリにはスコアが、カメラロールには写真が散らばっています。<br>「前に一緒に行ったとき、どうだったっけ」と話すとき、探すところから始まります。</p>
 
-    <div class="compare">
-      <div>
-        <div class="label">スコアアプリ</div>
-        <strong>プレー中に、ホールごとに打つ</strong>
-        <p>18ホール分のスコアはきれいに残ります。誰と回ったか、昼に何を食べたか、いくらかかったかは残りません。</p>
-      </div>
-      <div>
-        <div class="label">Golfory</div>
-        <strong>プレー後に、1件として残す</strong>
-        <p>ゴルフ場・合計スコア・同伴者・昼食・写真・今日の一打・振り返り・費用。その日の1ラウンドを、1画面で書き終わります。練習とグッズの購入も、同じアプリに残せます。</p>
-      </div>
-    </div>
-  </div>
+<div class="gf-compare">
+<div style="padding: 28px; border-radius: 20px; background: #FFFFFF; border: 1px solid #DCE0D6">
+<div style="font-weight: 700; margin-bottom: 4px">スコアアプリ</div>
+<div style="font-size: 14px; color: #5B6A61; margin-bottom: 20px">プレー中に、ホールごとに打つ</div>
+<div class="gf-mono" style="display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); border: 1px solid #DCE0D6; border-radius: 10px; overflow: hidden; font-size: 13px; text-align: center; margin-bottom: 20px">
+<span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">1</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">2</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">3</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">4</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">5</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">6</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">7</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">8</span><span style="padding: 6px 0; background: #EEF1EA; color: #5B6A61">9</span>
+<span style="padding: 8px 0">5</span><span style="padding: 8px 0">4</span><span style="padding: 8px 0">6</span><span style="padding: 8px 0">3</span><span style="padding: 8px 0">5</span><span style="padding: 8px 0">5</span><span style="padding: 8px 0">4</span><span style="padding: 8px 0">7</span><span style="padding: 8px 0">5</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px">
+<span style="padding: 4px 12px; border-radius: 999px; border: 1px dashed #B7BEB2; font-size: 13px; color: #7A877F">誰と？</span>
+<span style="padding: 4px 12px; border-radius: 999px; border: 1px dashed #B7BEB2; font-size: 13px; color: #7A877F">昼は？</span>
+<span style="padding: 4px 12px; border-radius: 999px; border: 1px dashed #B7BEB2; font-size: 13px; color: #7A877F">いくら？</span>
+<span style="padding: 4px 12px; border-radius: 999px; border: 1px dashed #B7BEB2; font-size: 13px; color: #7A877F">写真は？</span>
+</div>
+<p style="margin: 0; font-size: 15px; color: #4B5A51">18ホール分のスコアはきれいに残る。誰と回ったか、昼に何を食べたか、いくらかかったかは残らない。</p>
+</div>
+
+<div style="padding: 28px; border-radius: 20px; background: #15231B; color: #FFFFFF">
+<div style="font-weight: 700; margin-bottom: 4px">Golfory</div>
+<div style="font-size: 14px; color: #B9C7BE; margin-bottom: 20px">プレー後に、1件として残す</div>
+<div style="padding: 18px 20px; border-radius: 14px; background: #20332A; margin-bottom: 20px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px">
+<span style="font-size: 13px; color: #B9C7BE">2026年9月13日（日）</span>
+<span class="gf-mono" style="font-size: 26px; font-weight: 600">86</span>
+</div>
+<div class="gf-serif" style="font-weight: 800; font-size: 18px; margin-bottom: 12px">みどりヶ丘カントリークラブ</div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: #DCE5DF">
+<span>同伴者　田中 92 ・ 佐藤 102</span>
+<span>昼食　カツカレー</span>
+<span>今日の一打　18番のセカンド、7番アイアンがピン横1mに止まった</span>
+<span class="gf-mono">費用　¥17,600</span>
+</div>
+<div style="display: flex; align-items: center; gap: 14px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #34493E">
+<img src="images/lunch-curry.jpg" alt="昼食のカツカレーの写真" style="flex: none; width: 104px; height: 72px; object-fit: cover; border-radius: 10px">
+<div style="font-size: 13px; line-height: 1.6; color: #B9C7BE"><span style="display: block; font-weight: 700; color: #FFFFFF">写真もこのラウンドに</span>カメラロールから選ぶだけ。<br>あの日の昼食も、ここで見つかる。</div>
+</div>
+</div>
+<p style="margin: 0; font-size: 15px; color: #DCE5DF">その日の1ラウンドを、1画面で書き終わる。<br>練習とグッズの購入も、同じアプリに残せる。</p>
+</div>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row flip">
-      <div class="shot"><img src="images/shot-list.png" alt="ラウンド一覧画面。上に「すべて」「ゴルフ場」「同伴者」「タグ」の切り替え、その下に日付とゴルフ場名、右側にスコアとその日の費用が並んでいる。2026年9月21日 はるかぜカントリー倶楽部 99 ¥14,500、9月13日 みどりヶ丘カントリークラブ 86 ¥17,600 のように、新しい順に6件が並ぶ" loading="lazy"></div>
-      <div>
-        <h2>回った分だけ、並んでいく</h2>
-        <p>「ラウンド」タブは、ラウンドを新しい順に並べた一覧です。<strong>日付とゴルフ場名、スコア、その日にかかった費用</strong>が1行に出ます。</p>
-        <p>タップすればそのラウンドの詳細へ。「前に一緒に行ったのはいつだったか」を探すときは、ここから辿ります。</p>
-        <p class="sub" style="margin-bottom:0">無料版でも記録できる件数に上限はありません。</p>
-      </div>
-    </div>
-  </div>
+<!-- table of contents -->
+<section style="padding: 0 0 112px">
+<div class="gf-wrap">
+<div class="gf-toc" style="border-top: 2px solid #15231B; border-bottom: 1px solid #C9CFC3">
+<a href="#round" style="display: block; padding: 24px 20px 24px 0; text-decoration: none; color: #15231B">
+<span class="gf-mono" style="display: block; font-size: 13px; color: #1F7A45; margin-bottom: 6px">01</span>
+<span class="gf-serif" style="display: block; font-weight: 800; font-size: 20px">ラウンド</span>
+<span style="display: block; font-size: 14px; color: #5B6A61">1画面で書いて、写真も残す</span>
+</a>
+<a href="#lookback" style="display: block; padding: 24px 20px 24px 0; text-decoration: none; color: #15231B">
+<span class="gf-mono" style="display: block; font-size: 13px; color: #1F7A45; margin-bottom: 6px">02</span>
+<span class="gf-serif" style="display: block; font-weight: 800; font-size: 20px">見返す</span>
+<span style="display: block; font-size: 14px; color: #5B6A61">ゴルフ場・同伴者・タグから</span>
+</a>
+<a href="#practice" style="display: block; padding: 24px 20px 24px 0; text-decoration: none; color: #15231B">
+<span class="gf-mono" style="display: block; font-size: 13px; color: #1F7A45; margin-bottom: 6px">03</span>
+<span class="gf-serif" style="display: block; font-weight: 800; font-size: 20px">練習とグッズ</span>
+<span style="display: block; font-size: 14px; color: #5B6A61">球数も、道具代も</span>
+</a>
+<a href="#money" style="display: block; padding: 24px 20px 24px 0; text-decoration: none; color: #15231B">
+<span class="gf-mono" style="display: block; font-size: 13px; color: #1F7A45; margin-bottom: 6px">04</span>
+<span class="gf-serif" style="display: block; font-weight: 800; font-size: 20px">家計簿</span>
+<span style="display: block; font-size: 14px; color: #5B6A61">カレンダーと集計</span>
+</a>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row">
-      <div>
-        <h2>その日の夜に、1画面で書き終わる</h2>
-        <p>日付とゴルフ場名だけで保存できます。あとは残したい分だけ。前半・後半のスコア、同伴者とそのスコア、天候、ティー、昼食、タグ、今日の一打、振り返り、そのゴルフ場の覚え書き。</p>
-        <p>ゴルフ場名と同伴者名は、一度入れると次から候補に出ます。</p>
-        <p class="sub" style="margin-bottom:0">OB・ワンペナ・ロストボールを数えたい人だけ、設定でオンにすると入力欄が出ます。既定では出ません。</p>
-      </div>
-      <div class="shot"><img src="images/shot-form.png" alt="ラウンドの編集画面。日付、ゴルフ場名、前半44・後半42・合計86、同伴者2人（田中 92・佐藤 102）のスコア、費用のプレー代・飲食の入力欄が並んでいる" loading="lazy"></div>
-    </div>
-  </div>
+<!-- 01 round -->
+<section id="round" style="padding: 112px 0; background: #FFFFFF; border-top: 1px solid #DCE0D6">
+<div class="gf-wrap gf-chapter">
+<div>
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #1F7A45">01 ROUND</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 24px; font-weight: 800; line-height: 1.45">その日の夜に、<br>1画面で書き終わる。</h2>
+<p style="margin: 0 0 28px; color: #4B5A51">日付とゴルフ場名だけで保存できます。あとは残したい分だけ。前半・後半のスコア、同伴者とそのスコア、天候、ティー、昼食、タグ、今日の一打、振り返り、そのゴルフ場の覚え書き。</p>
+<div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid #DCE0D6">
+<div style="padding: 16px 0; border-bottom: 1px solid #DCE0D6"><div style="font-weight: 700">写真は複製しない</div><div style="font-size: 15px; color: #5B6A61">カメラロールから選ぶだけ。どの写真かの参照だけを保存するので、アプリが重くなりません。</div></div>
+<div style="padding: 16px 0; border-bottom: 1px solid #DCE0D6"><div style="font-weight: 700">費用は4区分</div><div style="font-size: 15px; color: #5B6A61">プレー代・飲食・交通・その他。金額を入れると、その日の合計が出ます。</div></div>
+<div style="padding: 16px 0; border-bottom: 1px solid #DCE0D6"><div style="font-weight: 700">名前は次から候補に</div><div style="font-size: 15px; color: #5B6A61">ゴルフ場名と同伴者名は、一度入れると次から候補に出ます。</div></div>
+</div>
+<p style="margin: 20px 0 0; font-size: 14px; color: #5B6A61">OB・ワンペナ・ロストボールを数えたい人だけ、設定でオンにすると入力欄が出ます。</p>
+</div>
+<div class="gf-phones">
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B"><img src="images/shot-form.png" alt="ラウンドの編集画面。日付、ゴルフ場名、前半44・後半42・合計86、同伴者2人（田中 92・佐藤 102）のスコア、費用のプレー代・飲食の入力欄が並んでいる" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B; margin-top: 56px"><img src="images/shot-detail.png" alt="ラウンド詳細画面。スコア（前半44・後半42・合計86）、天候、ティー、同伴者のスコア、タグ、昼食、今日の一打が1画面に並んでいる" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row flip">
-      <div class="shot"><img src="images/shot-detail.png" alt="ラウンド詳細画面。スコア（前半44・後半42・合計86）、天候、ティー、同伴者のスコア、タグ、昼食、今日の一打が1画面に並んでいる" loading="lazy"></div>
-      <div>
-        <h2>写真も、今日の一打も、一緒に残る</h2>
-        <p>写真はカメラロールから選ぶだけ。Golfory は写真を複製せず、<strong>どの写真かの参照だけを保存します</strong>。だからアプリが重くなりません。</p>
-        <p>「今日の一打」は、その日いちばん心に残った1打を1行で。次のラウンドに向けた振り返りと、そのゴルフ場の注意点も、同じ画面に残ります。</p>
-        <p class="sub" style="margin-bottom:0">同伴者と話すときに、そのラウンドを開けば、写真も出来事もそこにあります。</p>
-      </div>
-    </div>
-  </div>
+<!-- 02 look back -->
+<section id="lookback" style="padding: 112px 0">
+<div class="gf-wrap gf-chapter flip">
+<div class="gf-phones">
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B"><img src="images/shot-list.png" alt="ラウンド一覧画面。上に「すべて」「ゴルフ場」「同伴者」「タグ」の切り替え、その下に日付とゴルフ場名、右側にスコアとその日の費用が新しい順に並んでいる" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B; margin-top: 56px"><img src="images/shot-course.png" alt="ゴルフ場ごとの画面。みどりヶ丘カントリークラブ 2回。覚え書きが日付ごとに2件、その下にその2回のラウンドが並んでいる" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+</div>
+<div>
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #1F7A45">02 LOOK BACK</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 24px; font-weight: 800; line-height: 1.45">回った分だけ、<br>並んでいく。</h2>
+<p style="margin: 0 0 20px; color: #4B5A51">「ラウンド」タブは、新しい順の一覧です。日付とゴルフ場名、スコア、その日にかかった費用が1行に出ます。</p>
+<p style="margin: 0 0 20px; color: #4B5A51">一覧の上で「ゴルフ場」「同伴者」「タグ」に切り替えれば、過去のラウンドを引き出せます。ゴルフ場を開くと、そこで残した覚え書きが日付ごとに並び、その下にそこで回ったラウンドが出ます。</p>
+<p style="margin: 0; font-size: 14px; color: #5B6A61">無料版でも、記録できる件数に上限はありません。</p>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <h2>かかったお金も、項目ごとに</h2>
-    <p>プレー代・飲食・交通・その他の4区分。ラウンドごとに金額を入れると、その日の合計が出ます。</p>
-    <p class="sub" style="margin-bottom:0">ラウンド・練習・グッズの費用は、家計簿タブのカレンダーと集計でまとめて見返せます（下のカレンダー・集計の節）。</p>
-  </div>
+<!-- 03 practice & goods -->
+<section id="practice" style="padding: 112px 0; background: #FFFFFF; border-top: 1px solid #DCE0D6; border-bottom: 1px solid #DCE0D6">
+<div class="gf-wrap gf-chapter">
+<div>
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #1F7A45">03 PRACTICE &amp; GOODS</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 24px; font-weight: 800; line-height: 1.45">練習の球数も、<br>道具代も、同じ1冊に。</h2>
+<div style="display: flex; flex-direction: column; gap: 0; border-top: 1px solid #DCE0D6">
+<div style="padding: 18px 0; border-bottom: 1px solid #DCE0D6"><div style="font-weight: 700">練習</div><div style="font-size: 15px; color: #5B6A61">練習場・合計球数・クラブ別の球数・費用・写真と動画・メモ。<br>クラブは、設定タブで登録したマイバッグから選びます。</div></div>
+<div style="padding: 18px 0; border-bottom: 1px solid #DCE0D6"><div style="font-weight: 700">グッズ</div><div style="font-size: 15px; color: #5B6A61">ボール・グローブ・ウェアなどの購入を、日付・アイテム名・個数・支払額・写真とともに。家計簿タブの「グッズ」に新しい順で並びます。</div></div>
+</div>
+<p style="margin: 20px 0 0; font-size: 14px; color: #5B6A61">練習の写真・動画も、複製は持たず参照だけを保存します。</p>
+</div>
+<div class="gf-phones">
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B"><img src="images/shot-practice.png" alt="練習記録の画面。かぜまちゴルフセンター、合計球数120球、費用 ¥2,400。クラブ別の球数は 1W 25球・7I 40球・PW 25球・AW 20球・SW 10球、下にメモ" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B; margin-top: 56px"><img src="images/shot-goods.png" alt="家計簿タブのグッズ一覧。ゴルフボール1ダース、グローブ、ティー、レインウェア、キャディバッグ用フードが日付の新しい順に並んでいる" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row">
-      <div>
-        <h2>ゴルフ場・同伴者・タグから見返す</h2>
-        <p>ゴルフ場（覚え書きも一緒に）・同伴者・タグから、過去のラウンドを引き出せます。切り替えは「ラウンド」一覧の上にあります。</p>
-        <p>ゴルフ場を開くと、そのゴルフ場で残した<strong>覚え書きが日付ごとに</strong>並び、その下にそこで回ったラウンドが出ます。</p>
-      </div>
-      <div class="shot"><img src="images/shot-course.png" alt="ゴルフ場ごとの画面。みどりヶ丘カントリークラブ 2回。覚え書きが2026年9月13日と5月17日の2件、その下にその2回のラウンド（86 ¥17,600、96 ¥15,800）が並んでいる" loading="lazy"></div>
-    </div>
-  </div>
+<!-- 04 money -->
+<section id="money" style="padding: 112px 0">
+<div class="gf-wrap gf-chapter flip">
+<div class="gf-phones">
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B"><img src="images/shot-calendar.png" alt="家計簿タブのカレンダー。2026年9月、9月の費用合計 ¥46,500。日付の下にラウンド・練習・グッズの印と金額が出ている" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+<div style="width: 240px; padding: 8px; border-radius: 38px; background: #15231B; margin-top: 56px"><img src="images/shot-stats.png" alt="家計簿タブの集計画面。今年の費用合計 ¥126,950。種類別にラウンド・練習・グッズの棒グラフと割合" style="display: block; width: 100%; height: auto; border-radius: 30px; background: #fff"></div>
+</div>
+<div>
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #1F7A45">04 MONEY</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 24px; font-weight: 800; line-height: 1.45">いくら使ったかを、<br>一度ちゃんと足す。</h2>
+<p style="margin: 0 0 20px; color: #4B5A51">家計簿タブのカレンダーで、月ごとのラウンド・練習・グッズ購入と金額、月の合計がひと目で分かります。日付を選べば、その日の記録へ進めます。</p>
+<p style="margin: 0 0 24px; color: #4B5A51">集計（Golfory Pro）では、期間を選んで費用の合計と種類別・項目別の内訳、1ラウンドあたりの平均、ゴルフ場ごとの集計を確認できます。</p>
+<div style="padding: 18px 20px; border-radius: 14px; background: #E6EDE3; font-size: 15px; color: #2C3D33">無料のままでも、これまでの費用の合計額（ラウンド・練習・グッズの合算）は「集計」で見られます。</div>
+<p style="margin: 20px 0 0; font-size: 14px; color: #5B6A61">カレンダーに載るのは記録済みのものだけです。これからの予定は登録しません。</p>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row flip">
-      <div class="shot"><img src="images/shot-practice.png" alt="練習記録の画面。2026年9月18日、かぜまちゴルフセンター、合計球数120球、費用 ¥2,400。クラブ別の球数は 1W 25球・7I 40球・PW 25球・AW 20球・SW 10球、下にメモ" loading="lazy"></div>
-      <div>
-        <h2>練習を残す</h2>
-        <p>練習場・合計球数・クラブ別の球数（マイバッグから選択）・費用・写真と動画・メモを記録できます。</p>
-        <p><strong>マイバッグ</strong>は設定タブで登録します。登録したクラブを、練習の記録で選べます。</p>
-        <p class="sub" style="margin-bottom:0">写真・動画も、ラウンドの写真と同じく複製は持たず、参照だけを保存します。</p>
-      </div>
-    </div>
-  </div>
+<!-- price -->
+<section id="price" style="padding: 112px 0; background: #15231B; color: #FFFFFF">
+<div class="gf-wrap gf-chapter flip">
+<div class="gf-phones">
+<div style="width: 260px; padding: 8px; border-radius: 40px; background: #0B140F; border: 1px solid #2E4437"><img src="images/shot-paywall.png" alt="Golfory Pro の画面。iCloud同期・広告除去・集計統計の3つと、月額 ¥150 と年額 ¥1,200 のプラン" style="display: block; width: 100%; height: auto; border-radius: 32px; background: #fff"></div>
+</div>
+<div>
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #9FD9B4">PRICE</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 32px; font-weight: 800; line-height: 1.45">記録は、全部無料。</h2>
+<div class="gf-price">
+<div style="padding: 26px 22px; border-radius: 20px; background: #20332A">
+<div style="font-size: 13px; color: #B9C7BE; margin-bottom: 4px">無料</div>
+<div class="gf-mono" style="font-size: 32px; font-weight: 600; line-height: 1.25; margin-bottom: 18px">¥0</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #DCE5DF">
+<span>記録・見返し・練習・グッズ・マイバッグ・カレンダーはすべて無料</span>
+<span>件数の上限なし</span>
+<span>これまでの費用の合計額は「集計」で見られる</span>
+<span>「ラウンド」一覧の下に広告が1つ</span>
+</div>
+</div>
+<div style="padding: 26px 22px; border-radius: 20px; background: #FFFFFF; color: #15231B">
+<div style="font-size: 13px; color: #5B6A61; margin-bottom: 4px">Golfory Pro（サブスクリプション）</div>
+<div class="gf-mono" style="font-size: 32px; font-weight: 600; line-height: 1.25; margin-bottom: 4px">¥150<span style="font-size: 14px; color: #5B6A61"> / 月</span></div>
+<div class="gf-mono" style="font-size: 15px; color: #4B5A51; margin-bottom: 18px">または ¥1,200 / 年</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #2C3D33">
+<span>iCloud 同期（複数の端末で共有）</span>
+<span>広告の非表示</span>
+<span>集計統計（ラウンド・練習・グッズの費用の合算）</span>
+</div>
+</div>
+</div>
+<p style="margin: 24px 0 0; font-size: 13px; color: #B9C7BE">期間終了の24時間前までに解約されない限り、自動的に更新されます。解約は端末の「設定」＞Apple ID＞「サブスクリプション」から行えます。</p>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row">
-      <div>
-        <h2>グッズの出費を残す</h2>
-        <p>ボール・グローブ・ウェアなどの購入を、日付・アイテム名・個数・支払額・写真とともに残せます。</p>
-        <p class="sub" style="margin-bottom:0">家計簿タブの「グッズ」に、新しい順に並びます。</p>
-      </div>
-      <div class="shot"><img src="images/shot-goods.png" alt="家計簿タブのグッズ一覧。ゴルフボール1ダース ¥4,800、グローブ 2個 ¥3,600、ティー ¥550、レインウェア ¥12,800、キャディバッグ用フード ¥2,200 が日付の新しい順に並んでいる" loading="lazy"></div>
-    </div>
-  </div>
+<!-- not -->
+<section style="padding: 112px 0">
+<div class="gf-wrap">
+<p class="gf-mono" style="margin: 0 0 12px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #1F7A45">WHAT IT DOESN'T DO</p>
+<h2 class="gf-serif gf-h2" style="margin: 0 0 40px; font-weight: 800; line-height: 1.45">やらないこと。</h2>
+<div class="gf-not" style="margin-bottom: 40px">
+<div style="padding: 22px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE0D6"><div style="font-weight: 700; margin-bottom: 4px">ホール単位のスコア入力</div><div style="font-size: 14px; color: #5B6A61">スコアアプリと併用する前提です</div></div>
+<div style="padding: 22px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE0D6"><div style="font-weight: 700; margin-bottom: 4px">SNS 用のスコア画像</div><div style="font-size: 14px; color: #5B6A61">スコア入りの写真をつくって共有する機能はありません</div></div>
+<div style="padding: 22px; border-radius: 16px; background: #FFFFFF; border: 1px solid #DCE0D6"><div style="font-weight: 700; margin-bottom: 4px">GPS ナビ・距離計測</div><div style="font-size: 14px; color: #5B6A61">コース上で使う道具ではありません</div></div>
+</div>
+<div style="padding: 24px 28px; border-left: 0; border-radius: 16px; background: #E6EDE3; color: #2C3D33; font-size: 15px">こんな方に向いています——月1回くらい回るエンジョイゴルファー。スコアは楽天やGDOでつけていて、写真は撮るけれど整理はしていない方。いくら使っているのか、一度も足したことがない方。</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row flip">
-      <div class="shot"><img src="images/shot-calendar.png" alt="家計簿タブのカレンダー。2026年9月、9月の費用合計 ¥46,500。日付の下にラウンド・練習・グッズの印と金額が出ていて、選んだ9月13日のラウンド（みどりヶ丘カントリークラブ ¥17,600）が下に表示されている" loading="lazy"></div>
-      <div>
-        <h2>カレンダーで見返す</h2>
-        <p>家計簿タブのカレンダーで、月ごとのラウンド・練習・グッズ購入と金額、月の合計がひと目で分かります。</p>
-        <p>日付を選ぶと、その日の記録が下に並び、そこから各詳細へ進めます。</p>
-        <p class="sub" style="margin-bottom:0">カレンダーに載るのは記録済みのものだけです。これからの予定は登録しません。</p>
-      </div>
-    </div>
-  </div>
+<!-- final cta -->
+<section style="padding: 0 0 112px">
+<div class="gf-wrap">
+<div class="gf-hero" style="min-height: 420px; border-radius: 28px; overflow: hidden; justify-content: flex-end; background-position: center 80%">
+<div style="position: relative; padding: 48px 40px; color: #FFFFFF; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div>
+<img src="images/appicon.png" alt="Golfory アプリアイコン" style="width: 72px; height: 72px; border-radius: 18px; margin-bottom: 20px">
+<h2 class="gf-serif gf-h2" style="margin: 0; font-weight: 800; line-height: 1.45">次のラウンドから、<br>1冊目をはじめる。</h2>
+</div>
+<a id="cta-bottom" href="https://apps.apple.com/jp/app/golfory/id6814350521" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 28px; border-radius: 16px; background: #FFFFFF; color: #15231B; text-decoration: none; font-weight: 700; font-size: 16px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M5 21h14"></path></svg>
+App Store で入手
+</a>
+</div>
+</div>
+</div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="row">
-      <div>
-        <h2>集計（Golfory Pro）</h2>
-        <p>期間を選んで、ラウンド・練習・グッズの費用の合計と種類別・項目別の内訳、1ラウンドあたりの平均、ゴルフ場ごとの集計を確認できます。</p>
-        <p class="sub" style="margin-bottom:0">無料のままでも、これまでの費用の合計額（ラウンド・練習・グッズの合算）は家計簿タブの「集計」で見られます。</p>
-      </div>
-      <div class="shot"><img src="images/shot-stats.png" alt="家計簿タブの集計画面。期間は今年（2026年1月1日〜9月24日）、費用合計 ¥126,950（ラウンド・練習・グッズの合計）。種類別にラウンド6回 ¥95,800、練習4回 ¥7,200、グッズ5件 ¥23,950 の棒グラフと割合" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="row flip">
-      <div class="shot"><img src="images/shot-paywall.png" alt="Golfory Pro の画面。iCloud同期・広告除去・集計統計の3つと、月額 ¥150 と年額 ¥1,200 のプラン" loading="lazy"></div>
-      <div>
-        <h2>料金</h2>
-        <div class="price">
-          <div>
-            <div class="tier">無料</div>
-            <div class="amount">¥0</div>
-            <ul>
-              <li>記録・見返し・練習・グッズ・マイバッグ・カレンダーは、すべて無料です</li>
-              <li>件数の上限もありません</li>
-              <li>これまでの費用の合計額（ラウンド・練習・グッズの合算）は、家計簿タブの「集計」で見られます</li>
-              <li>「ラウンド」一覧の下に広告が1つ出ます</li>
-            </ul>
-          </div>
-          <div>
-            <div class="tier">Golfory Pro（サブスクリプション）</div>
-            <div class="amount">月額 ¥150 / 年額 ¥1,200</div>
-            <ul>
-              <li>iCloud 同期（記録したデータを複数の端末で共有）</li>
-              <li>広告の非表示</li>
-              <li>集計統計（ラウンド・練習・グッズの費用の合算）</li>
-            </ul>
-          </div>
-        </div>
-        <p class="sub" style="margin:20px 0 0">期間終了の24時間前までに解約されない限り、自動的に更新されます。解約は端末の「設定」＞Apple ID＞「サブスクリプション」から行えます。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>やらないこと</h2>
-    <ul>
-      <li>ホール単位のスコア入力（スコアアプリと併用する前提です）</li>
-      <li>スコア入りの写真をつくって SNS に共有する機能</li>
-      <li>GPS ナビ・距離計測</li>
-    </ul>
-    <div class="note">
-      こんな方に向いています——月1回くらい回るエンジョイゴルファー、スコアは楽天やGDOでつけていて、写真は撮るけれど整理はしていない方、いくら使っているのか一度も足したことがない方。
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>対応環境とご注意</h2>
-    <ul>
-      <li>iOS 17.0 以上の iPhone</li>
-      <li>iCloud 同期は Golfory Pro で有効になります。同期されるのはラウンド・練習・グッズ・マイバッグです（無料のあいだは端末の中だけで記録します）</li>
-      <li>写真・動画の本体は「写真」アプリに残ります。「写真」アプリで削除した写真・動画は Golfory でも表示できなくなります</li>
-      <li>アカウント登録は不要です</li>
-    </ul>
-    <p style="margin-bottom:0">本アプリが表示するスコア・費用の合計は、<strong>あなたが入力した内容の集計です</strong>。公式のスコア・ハンディキャップ・会計記録としての効力はありません。</p>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <p><a class="cta" id="cta-bottom" href="https://apps.apple.com/jp/app/golfory/id6814350521">App Store で見る</a></p>
-    <p style="margin-top:26px">
-      <a href="https://shoheicraftdev-design.github.io/golfory-support/">サポート・使い方</a>
-      <a href="https://shoheicraftdev-design.github.io/golfory-support/privacy.html">プライバシーポリシー</a>
-      <a href="https://shoheicraftdev-design.github.io/golfory-support/terms.html">利用規約</a>
-      <a href="mailto:shohei.craft.dev@gmail.com">お問い合わせ</a>
-    </p>
-    <p style="margin-top:18px">ShoheiCraftDev</p>
-  </div>
+<!-- footer -->
+<footer style="border-top: 1px solid #DCE0D6; padding: 48px 0 64px; font-size: 13px; color: #5B6A61">
+<div class="gf-wrap" style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px; max-width: 56em">
+<span>対応環境: iOS 17.0 以上の iPhone ／ アカウント登録は不要です</span>
+<span>iCloud 同期は Golfory Pro で有効になります。同期されるのはラウンド・練習・グッズ・マイバッグです（無料のあいだは端末の中だけで記録します）。</span>
+<span>写真・動画の本体は「写真」アプリに残ります。「写真」アプリで削除した写真・動画は Golfory でも表示できなくなります。</span>
+<span>表示するスコア・費用の合計は、入力した内容の集計です。公式のスコア・ハンディキャップ・会計記録としての効力はありません。</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center">
+<a href="https://shoheicraftdev-design.github.io/golfory-support/">サポート・使い方</a>
+<a href="https://shoheicraftdev-design.github.io/golfory-support/privacy.html">プライバシーポリシー</a>
+<a href="https://shoheicraftdev-design.github.io/golfory-support/terms.html">利用規約</a>
+<a href="mailto:shohei.craft.dev@gmail.com">お問い合わせ</a>
+<span style="margin-left: auto">© ShoheiCraftDev</span>
+</div>
+</div>
 </footer>
 
+</div>
 </body>
 </html>
